@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFE GUARD</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            min-height: 100vh;
+            background-color: rgb(248, 244, 244);
+        }
+
+        /* content styling */
+        .content {
+            position: relative;
+            width: 100%;
+            gap: 10px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(40, 91, 247);
+            padding: 20px;
+            color: white;
+        }
+
+        .content img{
+            width: 180px;
+        }
+
+        #search-category {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(29, 27, 27);
+            color: rgb(246, 247, 249);
+            cursor: pointer;
+        }
+
+
+        .more-info{
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+        }
+
+        #posts-container {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.1;
+        }
+
+        .post {
+            width: 50%;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .post-h {
+            background-color: rgb(40, 91, 247);
+            padding: 10px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-bottom: 5px;
+        }
+
+        .post-bottom {
+            display: flex;
+            height: 100%;
+            padding: 10px;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: white;
+        }
+
+        .post p {
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 0;
+        }
+
+        button {
+            padding: 10px 50px;
+            border-radius: 5px;
+            background-color: rgb(40, 91, 247);
+            color: white;
+            border: none;
+            font-weight: 700;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: rgb(12, 55, 186);
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .form-content{
+            display: flex;
+            align-items: center;
+        }
+
+        .inp{
+            width: 150px;
+            height: 30px;
+        }
+        
+
+        @media (max-width: 768px) {
+
+            .content {
+                position: relative;
+                width: 100%;
+                gap: 10px; 
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(40, 91, 247);
+                padding: 20px;
+                color: white;
+            }
+
+            #logo{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+            }
+    
+            .content img{
+                width: 70px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            .form-title-cat{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .post-h {
+                height: 50px;
+            }
+
+            .post {
+                width: 80%;
+                min-height: 300px;
+            }
+
+            .post p {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .post-bottom {
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+                padding: 5px;
+                height: 80%;
+                gap: 10px;
+            }
+
+            .form-content{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            button {
+                padding: 8px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header>
+        <!-- HEADEA-CONTENT-DIV -->
+        <div class="content">
+            <!-- LOGO-TEXT&IMG -->
+            <div id="logo">
+                <h1>
+                    LIFE GUARD
+                </h1>
+                <img src="./img/7q7W3Z-LogoMakr.png"  alt="">
+            </div>
+            <!-- CATEGORY-FILTER -->
+            <select id="search-category">
+                <option value="">All Categories</option>
+                <option value="Accident">Accident</option>
+                <option value="Fire">Fire</option>
+                <option value="Riot">Riot</option>
+            </select>
+            <button id="search-button">Filter</button>
+        </div>
+    </header>
+
+        <!-- FORM SECTION -->
+    <section class="more-info">
+        <!-- FORM -->
+        <form id="post-form">
+            <!-- TITLE & CATEGORY INPUT DIV -->
+            <div class="form-title-cat">
+                <!-- TITLE INPUT -->
+                <label for="title">Title:</label>
+                <input class="inp" type="text" id="title" name="title" required>
+                <!-- CATEGORY INPUT -->
+                <label  for="category">Category:</label>
+                <select class="inp" id="category" name="category" required>
+                    <option value="Accident">Accident</option>
+                    <option value="Fire">Fire</option>
+                    <option value="Riot">Riot</option>
+                </select>
+            </div>
+            <!-- TEXT AREA  -->
+            <div class="form-content">
+                <!-- TEXT AREA INPUT -->
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea><br>
+            </div>
+            <!-- SUBMIT BUTTON -->
+            <button type="submit">Submit Post</button>
+        </form>
+    </section>
+    
+    <!-- POST DIV -->
+    <div id="posts-container"></div>
+
+    <script src="cordova.js"></script>
+    <script>
+        //BACKEND API URL AND API KEY
+        const apiUrl = 'https://api.jsonbin.io/v3/b/6655e754acd3cb34a84efd4d';
+        const apiKey = '$2a$10$2pEAqotsyyNzDAOz9A4veOLiZiNXjicXVtOGYZGEaP/V5niNDFj16'; // Replace with your actual API key
+        //POST CONTAINER
+        const postsContainer = document.getElementById('posts-container');
+
+        document.addEventListener('deviceready', onDeviceReady, false);
+
+        function onDeviceReady() {
+            fetchAndDisplayPosts();
+
+            document.getElementById('post-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const title = formData.get('title');
+                const content = formData.get('content');
+                const category = formData.get('category');
+
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        fetch(`${apiUrl}/latest`, {
+                            headers: {
+                                'X-Master-Key': apiKey
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            const newPost = {
+                                id: (data.record.record.length + 1).toString(),
+                                title: title,
+                                content: content,
+                                category: category,
+                                latitude: latitude,
+                                longitude: longitude,
+                            };
+                            data.record.record.unshift(newPost);
+
+                            return fetch(apiUrl, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-Master-Key': apiKey
+                                },
+                                body: JSON.stringify({ record: data.record.record })
+                            });
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to add post');
+                            }
+                            return response.json();
+                        })
+                        .then(() => {
+                            fetchAndDisplayPosts();
+                            document.getElementById('title').value = '';
+                            document.getElementById('content').value = '';
+                        })
+                        .catch(error => {
+                            console.error('Error adding post:', error);
+                        });
+                    },
+                    function(error) {
+                        alert('Error getting location: ' + error.message);
+                    }
+                );
+            });
+
+            document.getElementById('search-button').addEventListener('click', () => {
+                const category = document.getElementById('search-category').value;
+                fetchAndDisplayPosts(category);
+            });
+
+
+        }
+
+        function fetchAndDisplayPosts(category = '') {
+            fetch(`${apiUrl}/latest`, {
+                headers: {
+                    'X-Master-Key': apiKey
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Fetched data:', data); // Add logging to debug
+                postsContainer.innerHTML = ''; // Clear previous posts
+                
+                // Check if the nested record field exists
+                if (data.record && data.record.record && Array.isArray(data.record.record)) {
+                    const posts = data.record.record.filter(post => 
+                        category === '' || post.category === category
+                    );
+
+                    posts.forEach(post => {
+                        displayPost(post);
+                    });
+                } else {
+                    console.error('Invalid data structure:', JSON.stringify(data, null, 2));
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
+        }
+
+        function displayPost(post) {
+            const postElement = document.createElement('div');
+            postElement.classList.add('post');
+            postElement.innerHTML = `
+                <div class="post-h">
+                    <h2>${post.title}</h2>
+                </div>
+                <div class="post-bottom">
+                    <p>Category:${post.category}</p>
+                    <p>Message: ${post.content}</p>
+                    <p>Latitude: ${post.latitude}</p>
+                    <p>Longitude: ${post.longitude}</p>
+                    <button onclick="deletePost('${post.id}')">Delete</button>
+                </div>
+            `;
+            postsContainer.appendChild(postElement);
+        }
+
+        function alertGeolocation() {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                        'Latitude: ' + position.coords.latitude + '\n' +
+                        'Longitude: ' + position.coords.longitude + '\n'
+                    
+                },
+                function(error) {
+                    alert('Error getting location: ' + error.message);
+                }
+            );
+        }
+
+        function deletePost(postId) {
+            fetch(`${apiUrl}/latest`, {
+                headers: {
+                    'X-Master-Key': apiKey
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const updatedPosts = data.record.record.filter(post => post.id !== postId);
+                return fetch(apiUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': apiKey
+                    },
+                    body: JSON.stringify({ record: updatedPosts })
+                });
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete post');
+                }
+                return response.json();
+            })
+            .then(() => {
+                fetchAndDisplayPosts();
+            })
+            .catch(error => {
+                console.error('Error deleting post:', error);
+            });
+        }
+
+        onDeviceReady()
+    </script>
+</body>
+</html>
