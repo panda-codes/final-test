@@ -15,7 +15,7 @@ body {
     justify-content: center;
 }
 
-/* SIGNUP-DIV */
+/* LOGIN-DIV */
 .container {
     max-width: 300px;
     display: flex;
@@ -31,7 +31,7 @@ body {
     margin-right: auto;
 }
 
-/* INPUTS STYLING */
+/* INPUTS-STYLING */
 input[type="email"],
 input[type="password"] {
     width: 100%;
@@ -40,28 +40,28 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-/* SIGNUP-BUTTON */
+/* LOGIN-BUTTON */
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* SIGNIP-BUTTON-HOVER */
-button:hover {
-    background-color: #0056b3;
-}
-
-/* LOGIN-BUTTON */
-.login-btn {
-    background-color: #28a745;
-}
-
 /* LOGIN-BUTTON-HOVER */
-.login-btn:hover {
+button:hover {
     background-color: #218838;
+}
+
+/* SIGNUP-BUTTON */
+.signup-btn {
+    background-color: #007BFF;
+}
+
+/* SIGNUP-BUTTON-HOVER */
+.signup-btn:hover {
+    background-color: #0056b3;
 }
